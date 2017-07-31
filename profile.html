@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+    <head>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css" />
+        <style>
+            .container{
+                height:100vh;
+                background-color: #aaa;
+                overflow-y: hidden;
+            }
+            ul{
+                list-style-type: none;
+            }
+            .container>ul>li{
+                height: 100vh;
+            }
+            .container>ul>li:first-child{
+                margin-top: 0px;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="container">
+            <ul>
+                <li style="background-color: #eeel;position: relative;">
+                    <div style="position: absolute;top:50px;right:50px;width:40vw;height:20vh;background-color: #d0f0f0;padding:20px;">
+                        Hi，我是郭愷瀚
+                    </div>
+                </li>
+                <li style="background-color: #c3c3c3;position: relative;">
+                    <div style="position: absolute;top:50px;right:50px;width:90vw;background-color: #d0f0f0;padding:20px;">
+                        <div style="text-align: center;margin-bottom: 20px">經歷</div>
+                        <ul >
+                            <li style="float:left;width:30%;margin-right: 3%;">
+                                <div style="text-align: center;margin-bottom: 10px">
+                                    <img src="igung_logo.png" alt="優仕網" style="width:200px;text-align: center">
+                                </div>
+                                <div style=";margin-bottom: 10px"><p>優仕網</p><p>（嚮網科技股份有限公司，2012／08～2015／05）</p></div>
+                                <div>擔任網頁工程師，主要以開發公司旗下網站愛逛街(http://iguang.tw/)
+                        ，工作內容包括：與其他分工人員溝通，前端網頁維護(html,  javascript,  jquery,  SEO,  網站API串接)，後端php程式開發(網站架構建立、開發、維護、API開發串接、網路爬蟲CURL、網頁資料分析(正規表示式)、網站統計資料分析及調校)，mysql資料庫開發(開發、維護、調校)、維護及新進技術員工教育訓練。其中網站也使用到memcached、Redis、sphinx作為網站應用。</div>
+                            </li>
+                            <li style="float:left;width:30%;margin-right: 3%;">
+                                <div  style="text-align: center;margin-bottom: 10px">
+                                    <img src="surejuice.jpg" alt="" style="width:200px;text-align: center">
+                                </div>
+                                <div style="margin-bottom: 10px">
+                                    <p>果然，果真自然</p>
+                                    <p>(https://www.facebook.com/surejuice/，
+                        2015／06～)</p>
+                                </div>
+                                <div>共同經營者，進行市場調查、產品測試開發、行銷分析實作、顧客關係管理、風險控管、業務接洽、FACEBOOK粉絲團操作及品牌創立。</div>
+                            </li>
+                            <li style="float:left;width:30%;margin-right: 3%;">
+                                <div style="text-align: center;margin-bottom: 10px">
+                                    <img src="logo_white.svg" alt="" style="width:200px;">
+                                </div>
+                                <div style="margin-bottom: 10px">旅遊咖tripresso</div>
+                                <div></div>
+                            </li>
+                        </ul>
+
+                    </div>
+                </li>
+                <li style="background-color: #2a2a2a;position: relative;">
+                    <div style="position: absolute;top:50px;left:50px;width:40vw;background-color: #d0f0f0;padding:20px;">
+                        <div style="text-align: center;margin-bottom: 20px">技能</div>
+                        <div>
+                            <div>
+                                <div>技術類</div>
+                                <p>前端：HTML、CSS、bootstrap、jQUERY、backbone.js</p>
+                                <p>後端：PHP、codeigniter</p>
+                                <p>其他：git、svn</p>
+
+                                <div>行銷類</div>
+                                <p>粉絲團操作、統計、創意發想</p>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                <li style="background-color: #4c4c4c;position: relative;">
+
+                    <div style="position: absolute;top:50px;right:50px;width:90vw;background-color: #d0f0f0;padding:20px;">
+                        <div style="text-align: center;margin-bottom: 20px">自介</div>
+                        <div>
+                            <p>男，76年次，高雄應用科技大學資訊管理研究畢，樂於學習新技術並勇於嘗試不怕失敗。</p>
+                            <p>工作理念講求團隊、制度、溝通、效率、責任、學習。擅長在企劃及美術人員間做為其溝通上的橋樑使得專案可以順利進行，工作時追求組織效率最佳化，並使團隊可以在每次的專案中學習並進步，閒暇時常研究各技術上的實務應用，目前正在自學swift。</p>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+        <script>
+            let $lihight = 0 - $('li').height();
+            const maxhight = ()=>(0-(($('li').length-1) * $('li').height()));
+            $("ul").bind('mousewheel', function(e) {
+                  clearTimeout($.data(this, 'timer'));
+                  $.data(this, 'timer', setTimeout(function() {
+                    let $targetTall = parseInt($('li:first-child').css('margin-top').replace(/[^-\d\.]/g, '')) ;
+                    console.log($targetTall);
+                     if(e.originalEvent.wheelDelta < 0) {
+                         //scroll down
+
+                         if($targetTall != maxhight()){
+                            $targetTall = $targetTall + $lihight;
+                            $('.container>ul>li:first-child').animate({'margin-top': $targetTall}, 500);
+                         }
+                         console.log('Down');
+                     }else {
+                        if($targetTall != 0){
+                            $targetTall = $targetTall - $lihight;
+                            $('.container>ul>li:first-child').animate({'margin-top': $targetTall}, 500);
+                         }
+                         //scroll up
+                         console.log('Up');
+                     }
+                     //do something
+                  }, 60));
+
+            });
+
+
+        </script>
+    </body>
+</html>
